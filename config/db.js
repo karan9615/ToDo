@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+require("dotenv").config();
 const db = process.env.MONGO_URI;
 
 const options = {
@@ -14,7 +15,7 @@ const options = {
 
 const connectDB = async () =>{
     try {
-      await mongoose.connect(`mongodb://localhost:27017/todolist`,options);
+      await mongoose.connect(db,options);
       console.log("MongoDB is connected");
     } catch (err) {
       console.error(err.message);
